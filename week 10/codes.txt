@@ -1,0 +1,461 @@
+/*
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+*/
+package oop2_all;
+ 
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+ 
+/**
+*
+* @author ahmad
+*/
+public class ChooseFromCombo extends Application {
+ 
+    @Override
+    public void start(Stage stage)  {
+        DBConnectMySQL db = new DBConnectMySQL();
+        Statement st = db.getStatement();
+        GridPane pane = new GridPane();
+        pane.setHgap(20);
+        pane.setVgap(20);
+        Label l1 = new Label("Choose ID: ");
+        ComboBox cb = new ComboBox();
+        String query = "select id from login";
+            try {
+                ResultSet rs = st.executeQuery(query);
+                while(rs.next()){
+                    cb.getItems().add(rs.getInt("id"));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SignUP.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        pane.add(l1, 0, 0);
+        pane.add(cb, 1, 0);
+        Scene scene = new Scene(pane, 400,400);
+        stage.setTitle("Connect");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+
+/*
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+*/
+package oop2_all;
+ 
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+ 
+/**
+*
+* @author ahmad
+*/
+public class ChooseFromCombo extends Application {
+ 
+    @Override
+    public void start(Stage stage)  {
+        DBConnectMySQL db = new DBConnectMySQL();
+        Statement st = db.getStatement();
+        GridPane pane = new GridPane();
+        pane.setHgap(20);
+        pane.setVgap(20);
+        Label l1 = new Label("Choose ID: ");
+        ComboBox cb = new ComboBox();
+        String query = "select id from login";
+            try {
+                ResultSet rs = st.executeQuery(query);
+                while(rs.next()){
+                    cb.getItems().add(rs.getInt("id"));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SignUP.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        TextField f1 = new TextField();
+        Button b = new Button("Display");
+        b.setOnAction(e->{
+            int id = (int) cb.getValue();
+            String q = "select username, password from login where id="+id+";";
+            try {
+                ResultSet rs = st.executeQuery(q);
+                while(rs.next()){
+                    String fullName = rs.getString("username")+" "+ rs.getString("password");
+                    f1.setText(fullName);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SignUP.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        f1.setEditable(false);
+        pane.add(l1, 0, 0);
+        pane.add(cb, 1, 0);
+        pane.add(b, 0, 1);
+        pane.add(f1, 0, 2);
+        Scene scene = new Scene(pane, 400,400);
+        stage.setTitle("Connect");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+
+
+
+/*
+
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+
+*/
+
+package oop2_all;
+ 
+import java.sql.SQLException;
+
+import java.sql.ResultSet;
+
+import java.sql.Statement;
+
+import java.util.logging.Level;
+
+import java.util.logging.Logger;
+
+import javafx.application.Application;
+
+import javafx.event.ActionEvent;
+
+import javafx.event.EventHandler;
+
+import javafx.geometry.Pos;
+
+import javafx.scene.Scene;
+
+import javafx.scene.control.Button;
+
+import javafx.scene.control.ComboBox;
+
+import javafx.scene.control.Label;
+
+import javafx.scene.control.PasswordField;
+
+import javafx.scene.control.TableColumn;
+
+import javafx.scene.control.TableView;
+
+import javafx.scene.control.TextField;
+
+import javafx.scene.control.cell.CheckBoxTableCell;
+
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import javafx.scene.layout.FlowPane;
+
+import javafx.scene.layout.GridPane;
+
+import javafx.scene.layout.VBox;
+
+import javafx.stage.Stage;
+ 
+/**
+
+*
+
+* @author ahmad
+
+*/
+
+public class ChooseFromCombo extends Application {
+ 
+    @Override
+
+    public void start(Stage stage)  {
+
+        DBConnectMySQL db = new DBConnectMySQL();
+
+        Statement st = db.getStatement();
+
+        // Create TableView with a generic type of Person
+
+        TableView<Person>  tableView = new TableView<>();
+
+        GridPane pane = new GridPane();
+
+        pane.setHgap(20);
+
+        pane.setVgap(20);
+
+        Label l1 = new Label("Choose ID: ");
+
+        ComboBox cb = new ComboBox();
+
+        String query = "select id from login";
+
+            try {
+
+                ResultSet rs = st.executeQuery(query);
+
+                while(rs.next()){
+
+                    cb.getItems().add(rs.getInt("id"));
+
+                }
+
+            } catch (SQLException ex) {
+
+                Logger.getLogger(SignUP.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+
+        TextField f1 = new TextField();
+
+        Button b = new Button("Display");
+
+        b.setOnAction(e->{
+
+            int id = (int) cb.getValue();
+
+            String q = "select username, password from login where id="+id+";";
+
+            try {
+
+                ResultSet rs = st.executeQuery(q);
+
+                while(rs.next()){
+
+                    String fullName = rs.getString("username")+" "+ rs.getString("password");
+
+                    f1.setText(fullName);
+
+                }
+
+            } catch (SQLException ex) {
+
+                Logger.getLogger(SignUP.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+
+        });
+
+        f1.setEditable(false);
+
+        Button b2 = new Button("Display All");
+
+        b2.setOnAction((ActionEvent e) -> {
+
+            tableView.getColumns().clear();
+
+            tableView.getItems().clear();
+
+            // Column for First Name
+
+            TableColumn<Person, Integer> column1 = new TableColumn<>("ID");
+
+            column1.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+            // Column for First Name
+
+            TableColumn<Person, String> column2 = new TableColumn<>("First Name");
+
+            column2.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+
+            // Column for Last Name
+
+            TableColumn<Person, String> column3 = new TableColumn<>("Last Name");
+
+            column3.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+
+
+            // Add columns to the table
+
+            tableView.getColumns().add(column1);
+
+            tableView.getColumns().add(column2);
+
+            tableView.getColumns().add(column3);
+
+            // Add data to the table
+
+            //tableView.getItems().add(new Person(1,"John", "Doe"));
+
+            //tableView.getItems().add(new Person(2, "Jane", "Deer"));
+
+            String q = "select id, username, password from login;";
+
+            try {
+
+                ResultSet rs = st.executeQuery(q);
+
+                while(rs.next()){
+
+                    tableView.getItems().add(new Person(rs.getInt("id"),rs.getString("username"), rs.getString("password")));  
+
+                }
+
+            } catch (SQLException ex) {
+
+                Logger.getLogger(SignUP.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+
+        });
+
+        pane.add(l1, 0, 0);
+
+        pane.add(cb, 1, 0);
+
+        pane.add(b, 0, 1);
+
+        pane.add(b2, 1, 1);
+
+        pane.add(f1, 0, 2);
+
+        pane.add(tableView, 0, 3);
+
+        // Create the layout and scene
+
+        //VBox vbox = new VBox(tableView);
+
+        Scene scene = new Scene(pane, 400,400);
+
+        stage.setTitle("Connect");
+
+        stage.setScene(scene);
+
+        stage.show();
+
+    }
+
+    public static void main(String[] args) {
+
+        launch(args);
+
+    }
+
+}
+ 
+ 
+/*
+
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+
+*/
+
+package oop2_all;
+ 
+import javafx.beans.property.IntegerProperty;
+
+import javafx.beans.property.SimpleIntegerProperty;
+
+import javafx.beans.property.SimpleStringProperty;
+
+import javafx.beans.property.StringProperty;
+ 
+public class Person {
+
+    private final IntegerProperty id;
+
+    private final StringProperty firstName;
+
+    private final StringProperty lastName;
+ 
+    // Constructor
+
+    public Person(int id, String firstName, String lastName) {
+
+        this.id = new SimpleIntegerProperty(id);
+
+        this.firstName = new SimpleStringProperty(firstName);
+
+        this.lastName = new SimpleStringProperty(lastName);
+
+    }
+ 
+    // Getter for id
+
+    public int getID() {
+
+        return id.get();
+
+    }
+
+    // Getter for firstName
+
+    public String getFirstName() {
+
+        return firstName.get();
+
+    }
+ 
+    // Getter for lastName
+
+    public String getLastName() {
+
+        return lastName.get();
+
+    }
+ 
+    // Getter for id property (needed for PropertyValueFactory)
+
+    public IntegerProperty idProperty() {
+
+        return id;
+
+    }
+
+    // Getter for firstName property (needed for PropertyValueFactory)
+
+    public StringProperty firstNameProperty() {
+
+        return firstName;
+
+    }
+ 
+    // Getter for lastName property (needed for PropertyValueFactory)
+
+    public StringProperty lastNameProperty() {
+
+        return lastName;
+
+    }
+
+}
+
+ 

@@ -1,0 +1,544 @@
+Text text = new Text("Hello World!!");
+        text.setFont(Font.font(30));
+ 
+        StackPane root = new StackPane();
+        root.getChildren().add(text);
+        // Create 3 threads to change the color of text        
+        Thread th1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                    text.setFill(Color.RED);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ChangeColorTextThread.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+ 
+        // Start the background thread
+        th1.start();
+
+-----------------------------------------------------------------------------------------------------------
+/*
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+*/
+package oop2;
+ 
+/**
+*
+* @author ahmad
+*/
+import java.util.Timer;
+import java.util.TimerTask;
+class Helper extends TimerTask
+{
+    public static int i = 0;
+    public void run()
+    {
+        System.out.println("Timer ran " + ++i);
+    }
+}
+class Test
+{
+    public static void main(String[] args)
+    {
+        Timer timer = new Timer();
+        TimerTask task = new Helper();
+        timer.schedule(task, 2000, 5000);
+    }
+}
+----------------------------
+/*
+
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+
+*/
+
+package oop2;
+ 
+import java.util.Timer;
+
+import java.util.TimerTask;
+
+import java.util.logging.Level;
+
+import java.util.logging.Logger;
+
+import javafx.application.Application;
+
+import static javafx.application.Application.launch;
+
+import javafx.application.Platform;
+
+import javafx.scene.Scene;
+
+import javafx.scene.layout.StackPane;
+
+import javafx.scene.paint.Color;
+
+import javafx.scene.text.Font;
+
+import javafx.scene.text.Text;
+
+import javafx.stage.Stage;
+ 
+/**
+
+*
+
+* @author ahmad
+
+*/
+
+public class ChangeColorTextThreadTimer extends Application {
+ 
+    @Override
+
+    public void start(Stage stage) {
+
+        Text text = new Text("Hello World!!");
+
+        text.setFont(Font.font(30));
+ 
+        StackPane root = new StackPane();
+
+        root.getChildren().add(text);
+
+        // Create 3 threads to change the color of text        
+
+        /*
+
+        Thread th1 = new Thread(new Runnable() {
+
+            @Override
+
+            public void run() {
+
+                try {
+
+                    Thread.sleep(3000);
+
+                    // Use Platform.runLater to safely update the UI on the JavaFX application thread
+
+                    Platform.runLater(new Runnable() {
+
+                        @Override
+
+                        public void run() {
+
+                            text.setFill(Color.RED);
+
+                        }
+
+                    });
+
+                } catch (InterruptedException ex) {
+
+                    Logger.getLogger(ChangeColorTextThread.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
+
+            }
+
+        });
+ 
+        // Start the background thread
+
+        th1.start();
+
+        */
+
+        // Create a Timer instance
+
+        Timer timer = new Timer();
+ 
+        // Schedule a task with a delay of 3000ms (3 seconds) and then repeatedly every 5000ms (5 seconds)
+
+        timer.schedule(new TimerTask() {
+
+            @Override
+
+            public void run() {
+
+                // Use Platform.runLater to safely update the UI on the JavaFX application thread
+
+                Platform.runLater(new Runnable() {
+
+                    @Override
+
+                    public void run() {
+
+                        // Change the text color to red after the delay
+
+                        text.setFill(Color.RED);
+
+                    }
+
+                });
+
+            }
+
+        }, 3000, 5000); // First run after 3 seconds, repeat every 5 seconds
+
+        /*
+
+        Thread th2 = new Thread(new Runnable() {
+
+            @Override
+
+            public void run() {
+
+                try {
+
+                    Thread.sleep(6000);
+
+                    Platform.runLater(new Runnable() {
+
+                        @Override
+
+                        public void run() {
+
+                            text.setFill(Color.GREEN);
+
+                        }
+
+                    });
+
+                } catch (InterruptedException ex) {
+
+                    Logger.getLogger(ChangeColorTextThread.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
+
+            }
+
+        });
+ 
+        // Start the background thread
+
+        th2.start();
+
+        */
+
+        // Create a Timer instance
+
+        Timer timer2 = new Timer();
+ 
+        // Schedule a task with a delay of 6000ms (6 seconds) and then repeatedly every 5000ms (5 seconds)
+
+        timer2.schedule(new TimerTask() {
+
+            @Override
+
+            public void run() {
+
+                // Use Platform.runLater to safely update the UI on the JavaFX application thread
+
+                Platform.runLater(new Runnable() {
+
+                    @Override
+
+                    public void run() {
+
+                        // Change the text color to red after the delay
+
+                        text.setFill(Color.GREEN);
+
+                    }
+
+                });
+
+            }
+
+        }, 6000, 5000); // First run after 6 seconds, repeat every 5 seconds
+
+        /*
+
+        Thread th3 = new Thread(new Runnable() {
+
+            @Override
+
+            public void run() {
+
+                try {
+
+                    Thread.sleep(9000);
+
+                    Platform.runLater(new Runnable() {
+
+                        @Override
+
+                        public void run() {
+
+                            text.setFill(Color.BLUE);
+
+                        }
+
+                    });
+
+                } catch (InterruptedException ex) {
+
+                    Logger.getLogger(ChangeColorTextThread.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
+
+            }
+
+        });
+ 
+        // Start the background thread
+
+        th3.start();
+
+        */
+
+        // Create a Timer instance
+
+        Timer timer3 = new Timer();
+ 
+        // Schedule a task with a delay of 9000ms (9 seconds) and then repeatedly every 5000ms (5 seconds)
+
+        timer3.schedule(new TimerTask() {
+
+            @Override
+
+            public void run() {
+
+                // Use Platform.runLater to safely update the UI on the JavaFX application thread
+
+                Platform.runLater(new Runnable() {
+
+                    @Override
+
+                    public void run() {
+
+                        // Change the text color to red after the delay
+
+                        text.setFill(Color.BLUE);
+
+                    }
+
+                });
+
+            }
+
+        }, 9000, 5000); // First run after 9 seconds, repeat every 5 seconds
+
+
+        Scene scene = new Scene(root, 600, 400);
+
+        stage.setTitle("Multi-color Text with Threads");
+
+        stage.setScene(scene);
+
+        stage.show();
+
+    }
+
+
+    public static void main(String[] args) {
+
+        launch(args);
+
+    }
+ 
+}
+
+ 
+/*
+
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+
+*/
+
+package oop2;
+ 
+import javafx.application.Application;
+
+import static javafx.application.Application.launch;
+
+import javafx.geometry.Insets;
+
+import javafx.geometry.Orientation;
+
+import javafx.scene.Scene;
+
+import javafx.scene.control.RadioButton;
+
+import javafx.scene.control.ToggleGroup;
+
+import javafx.scene.layout.BorderPane;
+
+import javafx.scene.layout.FlowPane;
+
+import javafx.scene.layout.Pane;
+
+import javafx.scene.paint.Color;
+
+import javafx.scene.shape.Circle;
+
+import javafx.scene.shape.Rectangle;
+
+import javafx.stage.Stage;
+ 
+/**
+
+*
+
+* @author ahmad
+
+*/
+
+public class TrafficLight extends Application {
+ 
+     Circle c1, c2, c3;
+
+    @Override
+
+    public void start(Stage stage) {
+
+        BorderPane bpane = new BorderPane();
+
+        bpane.setPadding(new Insets(15, 15, 20, 40));
+
+        c1 = new Circle(60,60,10);
+
+        c1.setFill(Color.TRANSPARENT);
+
+        //c1.setStyle("-fx-fill:red;-fx-stroke: red");
+
+        c1.setStyle("-fx-stroke: black");
+
+        c2 = new Circle(60,100,10);
+
+        c2.setFill(Color.TRANSPARENT);
+
+        //c2.setStyle("-fx-fill:yellow;-fx-stroke: yellow");
+
+        c2.setStyle("-fx-stroke: black");
+
+        c3 = new Circle(60,140,10);
+
+        c3.setFill(Color.TRANSPARENT);
+
+        //c3.setStyle("-fx-fill:green;-fx-stroke: green");
+
+        c3.setStyle("-fx-stroke: black");
+
+        //FlowPane pane = new FlowPane(Orientation.VERTICAL);
+
+        Pane pane = new Pane();
+
+        //pane.getChildren().addAll(c1,c2,c3);
+
+        Rectangle rec = new Rectangle(10,20, 100, 160);
+
+        rec.setFill(Color.WHITE);
+
+        rec.setStroke(Color.AQUA);
+
+        //rec.setOpacity(0.5);
+
+        rec.setFill(Color.TRANSPARENT);
+
+        Pane p = new Pane();
+
+        p.getChildren().add(rec);
+
+        pane.getChildren().addAll(c1,c2,c3,p);
+
+        RadioButton rb1 = new RadioButton("Red");
+
+        RadioButton rb2 = new RadioButton("Yellow");
+
+        RadioButton rb3 = new RadioButton("Green");
+
+        ToggleGroup group = new ToggleGroup();
+
+        rb1.setToggleGroup(group);
+
+        rb2.setToggleGroup(group);
+
+        rb3.setToggleGroup(group);
+
+        FlowPane p2 = new FlowPane();
+
+        p2.setHgap(20);
+
+        p2.getChildren().addAll(rb1, rb2, rb3);
+
+        bpane.setCenter(pane);
+
+        bpane.setBottom(p2);
+
+        rb1.setOnAction(e->{
+
+            resetRadio();
+
+            c1.setFill(Color.RED);
+
+            c1.setStyle("-fx-stroke: red");
+
+        });
+
+        rb2.setOnAction(e->{
+
+            resetRadio();
+
+            c2.setFill(Color.YELLOW);
+
+            c2.setStyle("-fx-stroke: yellow");
+
+        });
+
+        rb3.setOnAction(e->{
+
+            resetRadio();
+
+            c3.setFill(Color.GREEN);
+
+            c3.setStyle("-fx-stroke: green");
+
+        });
+
+        Scene scene = new Scene(bpane,250,250);
+
+        stage.setTitle("Traffic Light"); 
+
+        stage.setScene(scene); 
+
+        stage.show();
+
+    }
+
+    void resetRadio(){
+
+        c1.setFill(Color.TRANSPARENT);
+
+        c1.setStyle("-fx-stroke: black");
+
+        c2.setFill(Color.TRANSPARENT);
+
+        c2.setStyle("-fx-stroke: black");
+
+        c3.setFill(Color.TRANSPARENT);
+
+        c3.setStyle("-fx-stroke: black");
+
+    }
+
+    public static void main(String[] args) {
+
+        launch(args);
+
+    }
+
+}
+
+ 
