@@ -1,0 +1,2604 @@
+Week 2:
+class/file name: Instructor.java:
+code:
+public class Instructor extends Person {
+    private String degree;
+
+public Instructor(){
+    super();
+    degree = "";
+}
+
+public Instructor(int id, String fn, String ln, MyDate dob, String degree){
+    super(id, fn, ln, dob);
+    this.degree = degree;
+    }
+
+public String getDegree(){
+    return degree;
+}
+
+public void setDegree(String degree){
+    this.degree = degree;   
+    }
+
+public String toString(){
+    return super.toString() + "\nDegree: " + degree;
+    }
+    
+}
+-----------
+class/file name: MyDate.java:
+code:
+public class MyDate{
+
+private int day;
+private int month;
+private int year;
+
+public MyDate(){
+    day = 0;
+    month = 0;
+    year = 0;
+    }//default constructor
+
+public MyDate(int day, int m, int y){
+    this.day = day;
+    this.month = m;
+    this.year = y;
+    }//parameterized constructor
+    
+public getDay(){
+    return day;
+    }
+
+public setDay(int d){
+    this.day = d;
+    }
+public getMonth(){
+    return month;
+    }
+
+public setMonth(int m){
+    this.month = m;
+    }
+
+public getYear(){    
+    return year;
+    }
+
+public setYear(int y){
+    this.year = y;
+    }
+
+public String toString(){
+    return day + "/" + month + "/" + year;
+    }
+
+}
+-----------
+class/file name: Person.java:
+code:
+public class Person{
+
+    private int id;
+    private String fn;
+    private String ln;
+    private MyDate dob;
+
+    public Person(){
+        id = 0;
+        fn = "";
+        ln = "";
+        //dob=null;
+        dob = new MyDate();
+        }    
+public Person(int id, String fn, String ln, MyDate dob){
+    this.id = id;
+    this.fn = fn;
+    this.ln = ln;
+    this.dob = dob;
+    }
+
+//Getters and setters:
+public int getId() {
+    return id;
+}
+
+public void setId(int id) {
+    this.id = id;
+}
+
+public String getFn() {
+    return fn;
+}
+
+public void setFn(String fn) {
+    this.fn = fn;
+}
+
+public String getLn() {
+    return ln;
+}
+
+public void setLn(String ln) {
+    this.ln = ln;
+}
+
+public MyDate getDob() {
+    return dob;
+}
+
+public void setDob(MyDate dob) {
+    this.dob = dob;
+}
+
+public String toString(){
+    return "ID: " + id + "\nFirst Name: " + fn + "\nLast Name: " + ln + "\nDate of Birth: " + dob;
+    }
+
+}
+-----------
+class/file name: PersonTest.java:
+code:
+//main
+
+public class PersonTest{
+
+    public static void main(String args[]){
+        
+        Person p = new Person();
+        System.out.println(p);
+      //System.out.println(p.toString());
+        
+        MyDate dob = new MyDate(1, 1, 1990);
+        Student s = new Student(1, "Jane", "Doe", dob, "Computer Science");
+        System.out.println(s);
+        
+        
+        Instructor i = new Instructor(3, "James", "Doe", dob, "PhD");
+        System.out.println(i);
+        
+        }
+}
+-----------
+class/file name: Student.java:
+code:
+public class Student extends Person{
+
+private String major;
+
+public Student(){
+    super();
+    major = "";
+    }   
+
+public Student(int id, String fn, String ln, MyDate dob, String major){
+    super(id, fn, ln, dob);
+    this.major = major;
+    }
+
+public String getMajor(){
+    return major;
+    }
+
+public void setMajor(String major){
+    this.major = major;
+    }
+
+public String toString(){
+    return super.toString() + "\nMajor: " + major;
+    }
+
+}
+-----------
+class/file name: HelloWorld.java:
+code:
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class HelloWorld extends Application {
+    @Override
+    public void start(Stage primaryStage) {
+        Label helloLabel = new Label("Hello, World!");
+        StackPane root = new StackPane();
+        root.getChildren().add(helloLabel);
+        
+        Scene scene = new Scene(root, 300, 200);
+        
+        primaryStage.setTitle("Hello World JavaFX");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+-----------
+------------
+Week 3:
+class/file name: Exo1.java:
+code:
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+
+public class Exo1 extends Application {
+
+    @Override
+    public void start(Stage stage) {
+
+   /*  Stage s = new Stage();
+    Button btn2 = new Button("OK");
+    Scene scene2 = new Scene(btn2, 200, 250);
+    s.setTitle("My Second GUI");
+    s.setScene(scene2);
+    s.setX(20);
+    s.setY(20);
+    s.show(); */
+
+  /*   StackPane pane = new StackPane();
+    Button btn1 = new Button("OK");
+    pane.getChildren().add(btn1);
+    Button btn2 = new Button("Last");
+    pane.getChildren().add(btn2);
+    Scene scene = new Scene(pane, 200, 250);
+    stage.setTitle("My First GUI");
+    stage.setScene(scene);
+    stage.show(); */
+
+    FlowPane pane = new FlowPane();
+    Button btn1 = new Button("OK");
+    pane.getChildren().add(btn1);
+    Button btn2 = new Button("Last");
+    pane.getChildren().add(btn2);
+    Scene scene = new Scene(pane, 200, 250);
+    stage.setTitle("My First GUI");
+    stage.setScene(scene);
+    stage.show(); 
+
+    Circle c = new Circle();
+    c.setRadius(50);
+    c.setCenterX(100);
+    c.setCenterY(100);
+    c.setStroke(Color.RED);
+    c.setFill(Color.YELLOW);
+    StackPane pane2 = new StackPane();
+    pane2.getChildren().add(c);
+    Scene scene2 = new Scene(pane2, 200, 250);
+    stage.setTitle("My First GUI");
+    stage.setScene(scene2);
+    stage.show();
+
+
+   /*  Button btn1 = new Button("OK");
+    Scene scene = new Scene(btn1, 200, 250);
+    stage.setTitle("My First GUI");
+    stage.setScene(scene);
+    stage.show(); */
+
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
+}
+-----------
+------------
+Week 4:
+class/file name: Exo2.java:
+code:
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+
+public class Exo2 extends Application {
+
+    @Override
+    public void start(Stage stage) {
+
+        int radius = 20;
+        StackPane pane = new StackPane();
+
+        for(int i=1; i<=20; i++){
+            Circle c = new Circle();
+            c.setCenterX(200);
+            c.setCenterY(200);
+            c.setRadius(radius);
+            c.setStroke(Color.RED);
+            c.setFill(Color.TRANSPARENT);
+           // c.setOpacity(1.0);
+            pane.getChildren().add(c);
+            radius += 10;
+        }
+
+        Scene scene = new Scene(pane, 500, 500);
+        stage.setTitle("Circle");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+-----------
+class/file name: MyFlowPane1.java:
+code:
+import java.util.concurrent.Flow;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.text.Text;
+import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
+import javafx.stage.Stage;
+
+public class MyFlowPane1 extends Application {
+    
+    @Override
+    public void start(Stage stage) {
+
+    /*  FlowPane pane = new FlowPane();//Orientation.VERTICAL
+        pane.setHgap(20);
+        pane.setVgap(20);
+        //pane.setAlignment(Pos.CENTER);
+        pane.setPadding(new Insets(20,0,0,20));
+        Label fn = new Label("First Name");
+        TextField tf1 = new TextField();
+        tf1.setMaxWidth(100);
+        pane.getChildren().addAll(fn, tf1);
+
+        Scene scene = new Scene(pane, 500, 500);
+        stage.setTitle("My FlowPane");
+        stage.setScene(scene);
+        stage.show();
+    }
+    */
+
+    FlowPane pane = new FlowPane(Orientation.VERTICAL);
+        pane.setHgap(10);
+        pane.setVgap(10);
+        //pane.setAlignment(Pos.CENTER);
+        pane.setPadding(new Insets(20,0,0,20));
+
+        FlowPane p1 = new FlowPane();
+        p1.setHgap(10);
+        p1.setPadding(new Insets(20,0,0,20));
+        Label fn = new Label("First Name");
+        TextField tf1 = new TextField();
+        tf1.setMaxWidth(100);
+        p1.getChildren().addAll(fn, tf1);
+
+        FlowPane p2 = new FlowPane();
+        p2.setHgap(10);
+        p2.setPadding(new Insets(20,0,0,20));
+        Label ln = new Label("Last Name");
+        TextField tf2 = new TextField();
+        tf2.setMaxWidth(100);
+        p2.getChildren().addAll(ln, tf2);
+
+        FlowPane p3 = new FlowPane();
+        p3.setHgap(44);
+        p3.setPadding(new Insets(20,0,0,20));
+        Label age = new Label("Age");
+        TextField tf3 = new TextField();
+        tf3.setMaxWidth(40);
+        p3.getChildren().addAll(age, tf3);
+
+        FlowPane p4 = new FlowPane();
+        p4.setHgap(35);
+        p4.setPadding(new Insets(20,0,0,20));
+        Label Email = new Label("Email");
+        TextField tf4 = new TextField();
+        tf4.setMaxWidth(100);
+        p4.getChildren().addAll(Email, tf4);
+
+        FlowPane p5 = new FlowPane();
+        p5.setHgap(30);
+        p5.setPadding(new Insets(20,0,0,20));
+        Button b1 = new Button("Submit");
+        Button b2 = new Button("Cancel");
+        p5.getChildren().addAll(b1, b2);
+
+
+        pane.getChildren().addAll(p1, p2, p3,p4, p5);
+        Scene scene = new Scene(pane, 300, 300);
+        stage.setTitle("My FlowPane");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+-----------
+------------
+Week 5:
+class/file name: HVBox.java:
+code:
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+public  class HVBox extends Application{
+    @Override
+    public void start(Stage stage){
+        HBox hbox = new HBox(5);
+        hbox.getChildren().addAll(new Button("Left"), new Button("Right"), new Button("test"));
+        
+        Pane p = new Pane();
+        Text t = new Text(50, 50, "JavaFX Programming");
+        p.getChildren().add(t);        
+
+        Scene scene = new Scene(hbox, 400, 400);
+        stage.setTitle("HBox Pane");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
+}
+-----------
+class/file name: MyBorderPane.java:
+code:
+//import java.util.concurrent.Flow;
+import javafx.application.Application;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.paint.Color;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+
+public class MyBorderPane extends Application{
+
+    @Override
+    public void start(Stage stage){
+    BorderPane pane = new BorderPane();
+    Button b1 = new Button("Top");
+    Button b2 = new Button("Bottom");
+    b2.setBackground(Background.fill(Color.GREEN));
+    Button b3 = new Button("Left");
+    Button b4 = new Button("Right");
+    Button b5 = new Button("Center");
+
+    FlowPane p1 = new FlowPane();
+    p1.setAlignment(Pos.CENTER);
+    p1.setStyle("-fx-background-color: gold");
+    p1.getChildren().add(b1);
+
+
+    FlowPane p2 = new FlowPane();
+    p2.setAlignment(Pos.CENTER);
+    p2.getChildren().add(b2);
+
+    FlowPane p3 = new FlowPane(Orientation.VERTICAL);
+    p3.setAlignment(Pos.CENTER);
+    p3.getChildren().add(b3);
+
+    FlowPane p4 = new FlowPane(Orientation.VERTICAL);
+    p4.setAlignment(Pos.CENTER);
+    p4.getChildren().add(b4);
+
+    FlowPane p5 = new FlowPane();
+    p5.setAlignment(Pos.CENTER);
+    p5.getChildren().add(b5);
+
+pane.setTop(p1);
+pane.setBottom(p2);
+pane.setLeft(p3);
+pane.setRight(p4);
+pane.setCenter(p5);
+
+Scene scene = new Scene(pane, 400, 400);
+stage.setTitle("My Border Pane");
+stage.setScene(scene);
+stage.show();
+
+}
+public static void main(String[] args) {
+    launch(args);
+}
+
+}
+-----------
+class/file name: MyGridPane.java:
+code:
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import javafx.geometry.Insets;
+
+public class MyGridPane extends Application{
+//pane for gridpane
+//pane2 for flowpane
+
+    @Override
+    public void start(Stage stage) {
+
+        GridPane pane = new GridPane();
+        pane.setPadding( new Insets(20, 0, 0, 20));
+        pane.setHgap(20);
+        pane.setVgap(20);
+
+        Label width = new Label("Width");
+        TextField t1 = new TextField();
+
+        Label height = new Label("Height");
+        TextField t2 = new TextField();
+
+        Label area = new Label("Area");
+        TextField t3 = new TextField();
+
+        Label per = new Label("Perimeter");
+        TextField t4 = new TextField();
+
+        Button b1 = new Button("Calculate");
+        Button b2 = new Button("Clear");
+
+        pane.add(width, 0, 0);
+        pane.add(t1, 1, 0);
+
+        pane.add(height, 0, 1);
+        pane.add(t2, 1, 1);
+
+        pane.add(area, 0, 2);
+        pane.add(t3, 1, 2);
+
+        pane.add(per, 0, 3);
+        pane.add(t4, 1, 3);
+
+        
+       FlowPane pane2 = new FlowPane();
+        pane2.setHgap(40);
+        pane2.setVgap(10);
+        pane2.getChildren().addAll(b1, b2);
+        pane.add(pane2, 1, 4); 
+
+        // pane.add(b1, 1, 4);
+        // pane.add(b2, 2, 4);
+        pane.addRow(4, new Button("Test1"), new Button("Test2"));
+        //pane.addColumn(2, new Button("Test3"), new Button("Test4"));
+
+
+        Scene scene = new Scene(pane, 400, 400);
+        stage.setTitle("My Grid Pane");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+-----------
+------------
+Week 6:
+class/file name: EventHandlerOK.java:
+code:
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
+
+public class EventHandlerOK extends Application{
+
+@Override
+public void start(Stage stage){
+
+    FlowPane pane = new FlowPane();
+    pane.setAlignment(Pos.CENTER);
+    pane.setHgap(20);
+    Button b1 = new Button("OK");
+    Button b2 = new Button("Cancel");
+
+    OuterEventHandler handler = new OuterEventHandler(b1,b2);
+    b1.setOnAction(handler);
+    b2.setOnAction(handler);
+
+    
+    pane.getChildren().addAll(b1, b2);
+
+    Scene scene = new Scene(pane, 200, 200);
+    stage.setTitle("Event Handler");
+    stage.setScene(scene);
+    stage.show();
+
+}
+
+public static void main(String[] args){
+    launch(args);
+}
+}
+-----------
+class/file name: InnerClassHandler.java:
+code:
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+
+import javafx.application.Application;
+
+public class InnerClassHandler extends Application {
+    Button b1, b2;
+    @Override
+    public void start(Stage stage){
+        FlowPane pane = new FlowPane();
+        pane.setAlignment(Pos.CENTER);
+        pane.setHgap(20);
+        b1 = new Button("Ok");
+        b2 = new Button("Cancel");
+
+        InnerHandler handler = new InnerHandler();
+        b1.setOnAction(handler);
+        b2.setOnAction(handler);
+        
+        pane.getChildren().addAll(b1, b2); 
+
+        Scene scene = new Scene(pane, 200, 200);
+        stage.setTitle("Inner Class Handler");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    class InnerHandler implements EventHandler<ActionEvent>{
+        @Override
+        public void handle(ActionEvent t){
+            if(t.getSource() == b1){
+            System.out.println("Ok Button Clicked");
+        }else {
+            System.out.println("Cancel Button Clicked");
+        }
+    }
+}
+public static void main(String[] args){
+    launch(args);
+}
+}
+-----------
+class/file name: OuterEventHandler.java:
+code:
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+
+public class OuterEventHandler implements EventHandler<ActionEvent> {
+    Button b1,b2;
+    public OuterEventHandler(Button b1, Button b2){
+        this.b1 = b1;
+        this.b2 = b2;
+    }
+
+    @Override
+    public void handle(ActionEvent t){
+        //System.out.println(t.getSource());
+        if (t.getSource()==b1){
+            System.out.println("OK Button Clicked");
+        }else  
+        System.out.println("Cancel Button Clicked");
+    }
+}
+-----------
+class/file name: OuterHandlerUpdateTitle.java:
+code:
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+
+public class OuterHandlerUpdateTitle implements EventHandler<ActionEvent> {
+   
+    UpdateTitle t;
+    public OuterHandlerUpdateTitle(UpdateTitle aThis){
+        t = aThis;
+    }
+    @Override
+    public void handle(ActionEvent e){
+        String title = t.f1.getText();
+        t.myStage.setTitle(title);
+    }
+}
+-----------
+class/file name: UpdateTitle.java:
+code:
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+//import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+public class UpdateTitle extends Application{
+    Stage myStage;
+    public TextField f1;
+
+@Override
+
+public void start(Stage stage){
+     myStage = new Stage();
+    FlowPane pane = new FlowPane();
+    Label l1 = new Label("Enter Title");
+    f1 = new TextField(); 
+
+    Button b = new Button("Update Title");
+    OuterHandlerUpdateTitle handler = new OuterHandlerUpdateTitle(this);
+    b.setOnAction(handler);
+    
+    pane.getChildren().addAll(l1, f1, b);
+
+    Scene scene = new Scene(pane, 200, 200);
+    myStage.setTitle("Title");
+    myStage.setScene(scene);
+    myStage.show();
+}
+
+public static void main(String[] args){
+    launch(args);
+}
+}
+-----------
+------------
+Week 7:
+class/file name: AnonymousInnerClass.java:
+code:
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+ 
+public class AnonymousInnerClass extends Application {
+ 
+    Text t;
+    Button b1, b2, b3;
+    @Override
+    public void start(Stage stage) {
+        FlowPane pane = new FlowPane(Orientation.VERTICAL);
+        FlowPane p = new FlowPane();
+        p.setHgap(20);
+        p.setAlignment(Pos.CENTER);
+        p.setStyle("-fx-background-color:pink");
+        b1 = new Button("Red");
+        b2 = new Button ("Green");
+        b3 = new Button ("Blue");
+        p.getChildren().addAll(b1,b2,b3);
+        Pane p2 = new Pane();
+        t = new Text(150,40,"Color");
+        p2.getChildren().addAll(t);
+        b1.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent e) {
+                t.setFill(Color.RED);
+            }
+        });
+        b2.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent e) {
+                t.setFill(Color.GREEN);
+            }
+        });
+        b3.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent e) {
+                t.setFill(Color.BLUE);
+            }
+        });
+        InnerHandlerTest handler = new InnerHandlerTest();
+        b1.setOnAction(handler);
+        b2.setOnAction(handler);
+        b3.setOnAction(handler);
+        //lambda expression:
+        /*b1.setOnAction(e-> {
+                t.setFill(Color.RED);
+        });
+        b2.setOnAction(e-> {
+                t.setFill(Color.GREEN);
+        });
+        b3.setOnAction(e-> {
+                t.setFill(Color.BLUE);
+        });*/
+        pane.getChildren().addAll(p,p2);
+        Scene scene = new Scene(pane, 400, 400);
+        stage.setTitle("Anonymous Inner Class");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public static void main(String[] args) {
+        launch(args);
+    }
+    class InnerHandlerTest implements EventHandler<ActionEvent>{
+ 
+        @Override
+        public void handle(ActionEvent e) {
+            System.out.println(e.getSource());
+            if(e.getSource() == b1){
+                t.setFill(Color.RED);
+            }else if(e.getSource() == b2){
+                t.setFill(Color.GREEN);
+            } else {
+                 t.setFill(Color.BLUE);
+            }
+        }
+    }
+}
+-----------
+class/file name: OuterHandlerReview.java:
+code:
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
+
+
+public class OuterHandlerReview extends Application {
+ 
+    public Label l;
+    public Button b;
+    @Override
+    public void start(Stage stage) {
+        FlowPane p = new FlowPane();
+        p.setHgap(20);
+        l = new Label("0");
+        b = new Button("Add");
+        p.getChildren().addAll(b, l);
+        OuterHandlerReviewA handler = new OuterHandlerReviewA(this);
+        b.setOnAction(handler);
+        Scene scene = new Scene(p, 200, 200);
+        stage.setTitle("Review");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+}
+-----------
+class/file name: OuterHandlerReviewA.java:
+code:
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+
+
+public class OuterHandlerReviewA implements EventHandler<ActionEvent> {
+ 
+    OuterHandlerReview a;
+    public OuterHandlerReviewA(OuterHandlerReview a) {
+        this.a = a;
+    }
+ 
+    @Override
+    public void handle(ActionEvent t) {
+        int v = Integer.parseInt(this.a.l.getText());
+        this.a.l.setText(""+(v+1));
+    }
+}
+-----------
+class/file name: SimpleCalculator.java:
+code:
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+ 
+
+public class SimpleCalculator extends Application {
+ 
+    @Override
+    public void start(Stage stage) {
+        GridPane p = new GridPane();
+        p.setHgap(20);
+        p.setVgap(20);
+        Label l1 = new Label("Number 1: ");
+        Label l2 = new Label("Number 2: ");
+        Label l3 = new Label("Operator: ");
+        Label l4 = new Label("Result: ");
+        TextField f1 = new TextField();
+        TextField f2 = new TextField();
+        TextField f3 = new TextField();
+        ComboBox cb = new ComboBox();
+        cb.getItems().addAll("Add", "Sub", "Mul", "Div", "Mod");
+        Button b1 = new Button("submit");
+        Button b2 = new Button("Clear");
+        p.add(l1, 0, 0);
+        p.add(f1, 1, 0);
+        p.add(l2, 0, 1);
+        p.add(f2, 1, 1);
+        p.add(l3, 0, 2);
+        p.add(cb, 1, 2);
+        p.add(l4, 0, 3);
+        p.add(f3, 1, 3);
+        p.add(b1, 0, 4);
+        p.add(b2, 1, 4);
+        b1.setOnAction(e->{
+            int v1 = Integer.parseInt(f1.getText());
+            int v2 = Integer.parseInt(f2.getText());
+            String op = (String)cb.getValue();
+            if(op.equals("Add")){
+                f3.setText(""+(v1+v2));
+            }else if(op.equals("Sub")){
+                f3.setText(""+(v1-v2));
+            }else if(op.equals("Mul")){
+                f3.setText(""+(v1*v2));
+            }else if(op.equals("Div")){
+                f3.setText(""+(v1/v2));
+            } else {
+                 f3.setText(""+(v1%v2));
+            }
+        });
+        Scene scene = new Scene(p, 400, 400);
+        stage.setTitle("calculator");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+-----------
+------------
+Week 8:
+class/file name: MyRadioButton.java:
+code:
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
+
+public class MyRadioButton extends Application {
+    @Override
+    public void start(Stage stage) {
+        FlowPane pane = new FlowPane();
+        pane.setVgap(20);
+        pane.setAlignment(Pos.CENTER);
+
+        RadioButton r = new RadioButton("Red");
+        RadioButton y = new RadioButton("Yellow");
+        RadioButton g = new RadioButton("Green");
+
+        ToggleGroup group = new ToggleGroup();
+        r.setToggleGroup(group);
+        y.setToggleGroup(group);
+        g.setToggleGroup(group);
+
+        pane.getChildren().addAll(r, y, g);
+
+        Scene scene = new Scene(pane, 200, 200);
+        stage.setTitle("My Radio Button");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+-----------
+class/file name: TabPaneExample.java:
+code:
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.Tab;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+ 
+ 
+//Reference: https://jenkov.com/tutorials/javafx/tabpane.html
+ 
+public class TabPaneExample extends Application {
+ 
+    public void start(Stage primaryStage) {
+ 
+        TabPane tabPane = new TabPane();
+ 
+        Tab tab1 = new Tab("Planes", new Label("Show all planes available"));
+        Tab tab2 = new Tab("Cars"  , new Label("Show all cars available"));
+        Tab tab3 = new Tab("Boats" , new Label("Show all boats available"));
+ 
+        tabPane.getTabs().add(tab1);
+        tabPane.getTabs().add(tab2);
+        tabPane.getTabs().add(tab3);
+        //Tab selectedTab = tabPane.getSelectionModel().getSelectedItem();
+ 
+        VBox vBox = new VBox(tabPane);
+        Scene scene = new Scene(vBox, 200, 200);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("JavaFX App");
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+ 
+}
+-----------
+------------
+Week 9:
+class/file name: ConnectDB.java:
+code:
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
+import javafx.geometry.Pos;
+import javafx.stage.Stage;
+
+public class ConnectDB extends Application {
+
+    @Override
+    public void start(Stage stage) {
+        
+
+        FlowPane pane = new FlowPane();
+        pane.setAlignment(Pos.CENTER);
+        Button b1 = new Button("Connect");
+        b1.setOnAction(e -> {
+            DBConnectMySQL db = new DBConnectMySQL();
+            Statement st = db.getStatement();
+            System.out.println("Connected");
+            // if (st != null) {
+            //     System.out.println("Connected to the database successfully!");
+            // } else {
+            //     System.out.println("Failed to connect to the database.");
+            // }
+        });
+        pane.getChildren().add(b1);
+
+        Scene scene = new Scene(pane, 200, 200);
+        stage.setTitle("ConnectDB");
+        stage.setScene(scene);
+        stage.show();
+        
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+-----------
+class/file name: DBConnectMySQL.java:
+code:
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+ 
+public class DBConnectMySQL {
+    private Statement stmt;
+    public DBConnectMySQL(){
+ 
+    final String DB_HOST = "jdbc:mysql://localhost/ua_s2025";
+	final String DB_USER = "root";
+	final String DB_PWD = "";
+	try {
+        	Connection con = DriverManager.getConnection(DB_HOST, DB_USER, DB_PWD);
+         	stmt = con.createStatement(
+				ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+    }
+    public Statement getStatement(){
+        return this.stmt;
+    }
+}
+-----------
+class/file name: SignUP.java:
+code:
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+ 
+
+public class SignUP extends Application {
+ 
+    @Override
+    public void start(Stage stage)  {
+        DBConnectMySQL db = new DBConnectMySQL();
+        Statement st = db.getStatement();
+        GridPane pane = new GridPane();
+        pane.setHgap(20);
+        pane.setVgap(20);
+        Label l1 = new Label("Username: ");
+        Label l2 = new Label("Password: ");
+        TextField f1 = new TextField();
+        PasswordField f2 = new PasswordField();
+        Button b1 = new Button("Save");
+        Button b2 = new Button("Display");
+        pane.add(l1, 0, 0);
+        pane.add(f1, 1, 0);
+        pane.add(l2, 0, 1);
+        pane.add(f2, 1, 1);
+        pane.add(b1, 0, 2);
+        pane.add(b2, 1, 2);
+        b1.setOnAction(e->{
+            String v1 = f1.getText();
+            String v2 = f2.getText();
+            String query = "insert into login(username, password) values('"+v1+"','"+v2+"')";
+            try {
+                st.executeUpdate(query);
+            } catch (SQLException ex) {
+                Logger.getLogger(SignUP.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        b2.setOnAction(e->{
+            String query = "select * from login";
+            try {
+                ResultSet rs = st.executeQuery(query);
+                while(rs.next()){
+                    System.out.print("ID: "+ rs.getInt("id")+"   ");
+                    System.out.print("  Username: "+rs.getString("username")+"   ");
+                    System.out.println("  Password: "+rs.getString("password")+"   ");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SignUP.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        Scene scene = new Scene(pane, 400,400);
+        stage.setTitle("Connect");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+-----------
+------------
+Week 10:
+codes:
+/*
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+*/
+package oop2_all;
+ 
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+ 
+/**
+*
+*
+*/
+public class ChooseFromCombo extends Application {
+ 
+    @Override
+    public void start(Stage stage)  {
+        DBConnectMySQL db = new DBConnectMySQL();
+        Statement st = db.getStatement();
+        GridPane pane = new GridPane();
+        pane.setHgap(20);
+        pane.setVgap(20);
+        Label l1 = new Label("Choose ID: ");
+        ComboBox cb = new ComboBox();
+        String query = "select id from login";
+            try {
+                ResultSet rs = st.executeQuery(query);
+                while(rs.next()){
+                    cb.getItems().add(rs.getInt("id"));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SignUP.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        pane.add(l1, 0, 0);
+        pane.add(cb, 1, 0);
+        Scene scene = new Scene(pane, 400,400);
+        stage.setTitle("Connect");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+
+/*
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+*/
+package oop2_all;
+ 
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+ 
+/**
+*
+*
+*/
+public class ChooseFromCombo extends Application {
+ 
+    @Override
+    public void start(Stage stage)  {
+        DBConnectMySQL db = new DBConnectMySQL();
+        Statement st = db.getStatement();
+        GridPane pane = new GridPane();
+        pane.setHgap(20);
+        pane.setVgap(20);
+        Label l1 = new Label("Choose ID: ");
+        ComboBox cb = new ComboBox();
+        String query = "select id from login";
+            try {
+                ResultSet rs = st.executeQuery(query);
+                while(rs.next()){
+                    cb.getItems().add(rs.getInt("id"));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SignUP.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        TextField f1 = new TextField();
+        Button b = new Button("Display");
+        b.setOnAction(e->{
+            int id = (int) cb.getValue();
+            String q = "select username, password from login where id="+id+";";
+            try {
+                ResultSet rs = st.executeQuery(q);
+                while(rs.next()){
+                    String fullName = rs.getString("username")+" "+ rs.getString("password");
+                    f1.setText(fullName);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SignUP.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        f1.setEditable(false);
+        pane.add(l1, 0, 0);
+        pane.add(cb, 1, 0);
+        pane.add(b, 0, 1);
+        pane.add(f1, 0, 2);
+        Scene scene = new Scene(pane, 400,400);
+        stage.setTitle("Connect");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+
+
+
+/*
+
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+
+*/
+
+package oop2_all;
+ 
+import java.sql.SQLException;
+
+import java.sql.ResultSet;
+
+import java.sql.Statement;
+
+import java.util.logging.Level;
+
+import java.util.logging.Logger;
+
+import javafx.application.Application;
+
+import javafx.event.ActionEvent;
+
+import javafx.event.EventHandler;
+
+import javafx.geometry.Pos;
+
+import javafx.scene.Scene;
+
+import javafx.scene.control.Button;
+
+import javafx.scene.control.ComboBox;
+
+import javafx.scene.control.Label;
+
+import javafx.scene.control.PasswordField;
+
+import javafx.scene.control.TableColumn;
+
+import javafx.scene.control.TableView;
+
+import javafx.scene.control.TextField;
+
+import javafx.scene.control.cell.CheckBoxTableCell;
+
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import javafx.scene.layout.FlowPane;
+
+import javafx.scene.layout.GridPane;
+
+import javafx.scene.layout.VBox;
+
+import javafx.stage.Stage;
+ 
+/**
+
+*
+
+*
+
+*/
+
+public class ChooseFromCombo extends Application {
+ 
+    @Override
+
+    public void start(Stage stage)  {
+
+        DBConnectMySQL db = new DBConnectMySQL();
+
+        Statement st = db.getStatement();
+
+        // Create TableView with a generic type of Person
+
+        TableView<Person>  tableView = new TableView<>();
+
+        GridPane pane = new GridPane();
+
+        pane.setHgap(20);
+
+        pane.setVgap(20);
+
+        Label l1 = new Label("Choose ID: ");
+
+        ComboBox cb = new ComboBox();
+
+        String query = "select id from login";
+
+            try {
+
+                ResultSet rs = st.executeQuery(query);
+
+                while(rs.next()){
+
+                    cb.getItems().add(rs.getInt("id"));
+
+                }
+
+            } catch (SQLException ex) {
+
+                Logger.getLogger(SignUP.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+
+        TextField f1 = new TextField();
+
+        Button b = new Button("Display");
+
+        b.setOnAction(e->{
+
+            int id = (int) cb.getValue();
+
+            String q = "select username, password from login where id="+id+";";
+
+            try {
+
+                ResultSet rs = st.executeQuery(q);
+
+                while(rs.next()){
+
+                    String fullName = rs.getString("username")+" "+ rs.getString("password");
+
+                    f1.setText(fullName);
+
+                }
+
+            } catch (SQLException ex) {
+
+                Logger.getLogger(SignUP.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+
+        });
+
+        f1.setEditable(false);
+
+        Button b2 = new Button("Display All");
+
+        b2.setOnAction((ActionEvent e) -> {
+
+            tableView.getColumns().clear();
+
+            tableView.getItems().clear();
+
+            // Column for First Name
+
+            TableColumn<Person, Integer> column1 = new TableColumn<>("ID");
+
+            column1.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+            // Column for First Name
+
+            TableColumn<Person, String> column2 = new TableColumn<>("First Name");
+
+            column2.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+
+            // Column for Last Name
+
+            TableColumn<Person, String> column3 = new TableColumn<>("Last Name");
+
+            column3.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+
+
+            // Add columns to the table
+
+            tableView.getColumns().add(column1);
+
+            tableView.getColumns().add(column2);
+
+            tableView.getColumns().add(column3);
+
+            // Add data to the table
+
+            //tableView.getItems().add(new Person(1,"John", "Doe"));
+
+            //tableView.getItems().add(new Person(2, "Jane", "Deer"));
+
+            String q = "select id, username, password from login;";
+
+            try {
+
+                ResultSet rs = st.executeQuery(q);
+
+                while(rs.next()){
+
+                    tableView.getItems().add(new Person(rs.getInt("id"),rs.getString("username"), rs.getString("password")));  
+
+                }
+
+            } catch (SQLException ex) {
+
+                Logger.getLogger(SignUP.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+
+        });
+
+        pane.add(l1, 0, 0);
+
+        pane.add(cb, 1, 0);
+
+        pane.add(b, 0, 1);
+
+        pane.add(b2, 1, 1);
+
+        pane.add(f1, 0, 2);
+
+        pane.add(tableView, 0, 3);
+
+        // Create the layout and scene
+
+        //VBox vbox = new VBox(tableView);
+
+        Scene scene = new Scene(pane, 400,400);
+
+        stage.setTitle("Connect");
+
+        stage.setScene(scene);
+
+        stage.show();
+
+    }
+
+    public static void main(String[] args) {
+
+        launch(args);
+
+    }
+
+}
+ 
+ 
+/*
+
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+
+*/
+
+package oop2_all;
+ 
+import javafx.beans.property.IntegerProperty;
+
+import javafx.beans.property.SimpleIntegerProperty;
+
+import javafx.beans.property.SimpleStringProperty;
+
+import javafx.beans.property.StringProperty;
+ 
+public class Person {
+
+    private final IntegerProperty id;
+
+    private final StringProperty firstName;
+
+    private final StringProperty lastName;
+ 
+    // Constructor
+
+    public Person(int id, String firstName, String lastName) {
+
+        this.id = new SimpleIntegerProperty(id);
+
+        this.firstName = new SimpleStringProperty(firstName);
+
+        this.lastName = new SimpleStringProperty(lastName);
+
+    }
+ 
+    // Getter for id
+
+    public int getID() {
+
+        return id.get();
+
+    }
+
+    // Getter for firstName
+
+    public String getFirstName() {
+
+        return firstName.get();
+
+    }
+ 
+    // Getter for lastName
+
+    public String getLastName() {
+
+        return lastName.get();
+
+    }
+ 
+    // Getter for id property (needed for PropertyValueFactory)
+
+    public IntegerProperty idProperty() {
+
+        return id;
+
+    }
+
+    // Getter for firstName property (needed for PropertyValueFactory)
+
+    public StringProperty firstNameProperty() {
+
+        return firstName;
+
+    }
+ 
+    // Getter for lastName property (needed for PropertyValueFactory)
+
+    public StringProperty lastNameProperty() {
+
+        return lastName;
+
+    }
+
+}
+-----------
+------------
+Week 11:
+class/file name: MyThread.java:
+code:
+import java.lang.Thread;
+
+public class MyThread extends Thread{ //public class MyThread implements Runnable {
+
+    String name; 
+
+    public MyThread(String name) {
+        this.name = name; 
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 100; i++) { 
+            System.out.println("hello from Thread: " + name + " iteration: " + i); // Print the thread's name and the current iteration
+        }
+        System.out.println("Hello from a thread: " + name); // Print a message with the thread's name
+    }
+
+    public static void main(String[] args) {
+        MyThread th1 = new MyThread("Th1"); // Create a new thread instance with a name
+        MyThread th2 = new MyThread("Th2"); // Create another thread instance with a name
+        MyThread th3 = new MyThread("Th3"); // Create yet another thread instance with a name
+
+        // Thread t1 = new Thread(th1); for Runnable implementation
+        // Thread t2 = new Thread(th2); 
+        // Thread t3 = new Thread(th3); 
+
+        th1.start(); // Start the first thread  
+        th2.start(); // Start the second thread
+        th3.start(); // Start the third thread
+    }
+
+}
+-----------
+class/file name: MyThread_4.java:
+code:
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+ 
+public class MyThread_4 extends Application {
+ 
+    Text textNode;
+ 
+    @Override
+    public void start(Stage primaryStage) {
+        textNode = new Text("Hello World!!!!");
+        textNode.setFont(Font.font(40));
+ 
+        StackPane root = new StackPane();
+        root.getChildren().add(textNode);
+ 
+        Scene scene = new Scene(root, 400, 200);
+        primaryStage.setTitle("Title");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+ 
+        Thread th1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(4000);
+                    textNode.setFill(Color.RED);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        th1.start();
+ 
+        Thread th2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(6000);
+                    textNode.setFill(Color.YELLOW);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        th2.start();
+ 
+        Thread th3 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(8000);
+                    textNode.setFill(Color.BLUE);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        th3.start();
+    }
+ 
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+-----------
+class/file name: Test.java:
+code:
+import java.util.Timer;
+import java.util.TimerTask;
+class Helper extends TimerTask
+{
+    public static int i = 0;
+    public void run()
+    {
+        System.out.println("Timer ran " + ++i);
+    }
+}
+class Test
+{
+    public static void main(String[] args)
+    {
+        Timer timer = new Timer();
+        TimerTask task = new Helper();
+        timer.schedule(task, 2000, 5000);
+    }
+}
+-----------
+------------
+Week 12:
+codes:
+Text text = new Text("Hello World!!");
+        text.setFont(Font.font(30));
+ 
+        StackPane root = new StackPane();
+        root.getChildren().add(text);
+        // Create 3 threads to change the color of text        
+        Thread th1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                    text.setFill(Color.RED);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ChangeColorTextThread.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+ 
+        // Start the background thread
+        th1.start();
+
+-----------------------------------------------------------------------------------------------------------
+/*
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+*/
+package oop2;
+ 
+/**
+*
+*
+*/
+import java.util.Timer;
+import java.util.TimerTask;
+class Helper extends TimerTask
+{
+    public static int i = 0;
+    public void run()
+    {
+        System.out.println("Timer ran " + ++i);
+    }
+}
+class Test
+{
+    public static void main(String[] args)
+    {
+        Timer timer = new Timer();
+        TimerTask task = new Helper();
+        timer.schedule(task, 2000, 5000);
+    }
+}
+----------------------------
+/*
+
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+
+*/
+
+package oop2;
+ 
+import java.util.Timer;
+
+import java.util.TimerTask;
+
+import java.util.logging.Level;
+
+import java.util.logging.Logger;
+
+import javafx.application.Application;
+
+import static javafx.application.Application.launch;
+
+import javafx.application.Platform;
+
+import javafx.scene.Scene;
+
+import javafx.scene.layout.StackPane;
+
+import javafx.scene.paint.Color;
+
+import javafx.scene.text.Font;
+
+import javafx.scene.text.Text;
+
+import javafx.stage.Stage;
+ 
+/**
+
+*
+
+*
+
+*/
+
+public class ChangeColorTextThreadTimer extends Application {
+ 
+    @Override
+
+    public void start(Stage stage) {
+
+        Text text = new Text("Hello World!!");
+
+        text.setFont(Font.font(30));
+ 
+        StackPane root = new StackPane();
+
+        root.getChildren().add(text);
+
+        // Create 3 threads to change the color of text        
+
+        /*
+
+        Thread th1 = new Thread(new Runnable() {
+
+            @Override
+
+            public void run() {
+
+                try {
+
+                    Thread.sleep(3000);
+
+                    // Use Platform.runLater to safely update the UI on the JavaFX application thread
+
+                    Platform.runLater(new Runnable() {
+
+                        @Override
+
+                        public void run() {
+
+                            text.setFill(Color.RED);
+
+                        }
+
+                    });
+
+                } catch (InterruptedException ex) {
+
+                    Logger.getLogger(ChangeColorTextThread.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
+
+            }
+
+        });
+ 
+        // Start the background thread
+
+        th1.start();
+
+        */
+
+        // Create a Timer instance
+
+        Timer timer = new Timer();
+ 
+        // Schedule a task with a delay of 3000ms (3 seconds) and then repeatedly every 5000ms (5 seconds)
+
+        timer.schedule(new TimerTask() {
+
+            @Override
+
+            public void run() {
+
+                // Use Platform.runLater to safely update the UI on the JavaFX application thread
+
+                Platform.runLater(new Runnable() {
+
+                    @Override
+
+                    public void run() {
+
+                        // Change the text color to red after the delay
+
+                        text.setFill(Color.RED);
+
+                    }
+
+                });
+
+            }
+
+        }, 3000, 5000); // First run after 3 seconds, repeat every 5 seconds
+
+        /*
+
+        Thread th2 = new Thread(new Runnable() {
+
+            @Override
+
+            public void run() {
+
+                try {
+
+                    Thread.sleep(6000);
+
+                    Platform.runLater(new Runnable() {
+
+                        @Override
+
+                        public void run() {
+
+                            text.setFill(Color.GREEN);
+
+                        }
+
+                    });
+
+                } catch (InterruptedException ex) {
+
+                    Logger.getLogger(ChangeColorTextThread.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
+
+            }
+
+        });
+ 
+        // Start the background thread
+
+        th2.start();
+
+        */
+
+        // Create a Timer instance
+
+        Timer timer2 = new Timer();
+ 
+        // Schedule a task with a delay of 6000ms (6 seconds) and then repeatedly every 5000ms (5 seconds)
+
+        timer2.schedule(new TimerTask() {
+
+            @Override
+
+            public void run() {
+
+                // Use Platform.runLater to safely update the UI on the JavaFX application thread
+
+                Platform.runLater(new Runnable() {
+
+                    @Override
+
+                    public void run() {
+
+                        // Change the text color to red after the delay
+
+                        text.setFill(Color.GREEN);
+
+                    }
+
+                });
+
+            }
+
+        }, 6000, 5000); // First run after 6 seconds, repeat every 5 seconds
+
+        /*
+
+        Thread th3 = new Thread(new Runnable() {
+
+            @Override
+
+            public void run() {
+
+                try {
+
+                    Thread.sleep(9000);
+
+                    Platform.runLater(new Runnable() {
+
+                        @Override
+
+                        public void run() {
+
+                            text.setFill(Color.BLUE);
+
+                        }
+
+                    });
+
+                } catch (InterruptedException ex) {
+
+                    Logger.getLogger(ChangeColorTextThread.class.getName()).log(Level.SEVERE, null, ex);
+
+                }
+
+            }
+
+        });
+ 
+        // Start the background thread
+
+        th3.start();
+
+        */
+
+        // Create a Timer instance
+
+        Timer timer3 = new Timer();
+ 
+        // Schedule a task with a delay of 9000ms (9 seconds) and then repeatedly every 5000ms (5 seconds)
+
+        timer3.schedule(new TimerTask() {
+
+            @Override
+
+            public void run() {
+
+                // Use Platform.runLater to safely update the UI on the JavaFX application thread
+
+                Platform.runLater(new Runnable() {
+
+                    @Override
+
+                    public void run() {
+
+                        // Change the text color to red after the delay
+
+                        text.setFill(Color.BLUE);
+
+                    }
+
+                });
+
+            }
+
+        }, 9000, 5000); // First run after 9 seconds, repeat every 5 seconds
+
+
+        Scene scene = new Scene(root, 600, 400);
+
+        stage.setTitle("Multi-color Text with Threads");
+
+        stage.setScene(scene);
+
+        stage.show();
+
+    }
+
+
+    public static void main(String[] args) {
+
+        launch(args);
+
+    }
+ 
+}
+
+ 
+/*
+
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+
+*/
+
+package oop2;
+ 
+import javafx.application.Application;
+
+import static javafx.application.Application.launch;
+
+import javafx.geometry.Insets;
+
+import javafx.geometry.Orientation;
+
+import javafx.scene.Scene;
+
+import javafx.scene.control.RadioButton;
+
+import javafx.scene.control.ToggleGroup;
+
+import javafx.scene.layout.BorderPane;
+
+import javafx.scene.layout.FlowPane;
+
+import javafx.scene.layout.Pane;
+
+import javafx.scene.paint.Color;
+
+import javafx.scene.shape.Circle;
+
+import javafx.scene.shape.Rectangle;
+
+import javafx.stage.Stage;
+ 
+/**
+
+*
+
+*
+
+*/
+
+public class TrafficLight extends Application {
+ 
+     Circle c1, c2, c3;
+
+    @Override
+
+    public void start(Stage stage) {
+
+        BorderPane bpane = new BorderPane();
+
+        bpane.setPadding(new Insets(15, 15, 20, 40));
+
+        c1 = new Circle(60,60,10);
+
+        c1.setFill(Color.TRANSPARENT);
+
+        //c1.setStyle("-fx-fill:red;-fx-stroke: red");
+
+        c1.setStyle("-fx-stroke: black");
+
+        c2 = new Circle(60,100,10);
+
+        c2.setFill(Color.TRANSPARENT);
+
+        //c2.setStyle("-fx-fill:yellow;-fx-stroke: yellow");
+
+        c2.setStyle("-fx-stroke: black");
+
+        c3 = new Circle(60,140,10);
+
+        c3.setFill(Color.TRANSPARENT);
+
+        //c3.setStyle("-fx-fill:green;-fx-stroke: green");
+
+        c3.setStyle("-fx-stroke: black");
+
+        //FlowPane pane = new FlowPane(Orientation.VERTICAL);
+
+        Pane pane = new Pane();
+
+        //pane.getChildren().addAll(c1,c2,c3);
+
+        Rectangle rec = new Rectangle(10,20, 100, 160);
+
+        rec.setFill(Color.WHITE);
+
+        rec.setStroke(Color.AQUA);
+
+        //rec.setOpacity(0.5);
+
+        rec.setFill(Color.TRANSPARENT);
+
+        Pane p = new Pane();
+
+        p.getChildren().add(rec);
+
+        pane.getChildren().addAll(c1,c2,c3,p);
+
+        RadioButton rb1 = new RadioButton("Red");
+
+        RadioButton rb2 = new RadioButton("Yellow");
+
+        RadioButton rb3 = new RadioButton("Green");
+
+        ToggleGroup group = new ToggleGroup();
+
+        rb1.setToggleGroup(group);
+
+        rb2.setToggleGroup(group);
+
+        rb3.setToggleGroup(group);
+
+        FlowPane p2 = new FlowPane();
+
+        p2.setHgap(20);
+
+        p2.getChildren().addAll(rb1, rb2, rb3);
+
+        bpane.setCenter(pane);
+
+        bpane.setBottom(p2);
+
+        rb1.setOnAction(e->{
+
+            resetRadio();
+
+            c1.setFill(Color.RED);
+
+            c1.setStyle("-fx-stroke: red");
+
+        });
+
+        rb2.setOnAction(e->{
+
+            resetRadio();
+
+            c2.setFill(Color.YELLOW);
+
+            c2.setStyle("-fx-stroke: yellow");
+
+        });
+
+        rb3.setOnAction(e->{
+
+            resetRadio();
+
+            c3.setFill(Color.GREEN);
+
+            c3.setStyle("-fx-stroke: green");
+
+        });
+
+        Scene scene = new Scene(bpane,250,250);
+
+        stage.setTitle("Traffic Light"); 
+
+        stage.setScene(scene); 
+
+        stage.show();
+
+    }
+
+    void resetRadio(){
+
+        c1.setFill(Color.TRANSPARENT);
+
+        c1.setStyle("-fx-stroke: black");
+
+        c2.setFill(Color.TRANSPARENT);
+
+        c2.setStyle("-fx-stroke: black");
+
+        c3.setFill(Color.TRANSPARENT);
+
+        c3.setStyle("-fx-stroke: black");
+
+    }
+
+    public static void main(String[] args) {
+
+        launch(args);
+
+    }
+
+}
+-----------
+------------
+Week 13:
+class/file name: XMLReader.java:
+code:
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package xmlreadwrite;
+
+import org.w3c.dom.*;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import java.io.File;
+
+/**
+ *
+ *
+ */
+public class XMLReader {
+    public static void main(String[] args) {
+        try {
+            // Load the XML file
+            File xmlFile = new File("C:/Users/ahmad/Desktop/students.xml");
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+
+            // Parse the XML document
+            Document doc = dBuilder.parse(xmlFile);
+            doc.getDocumentElement().normalize();
+
+            System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
+
+            // Get list of all <student> elements
+            NodeList studentList = doc.getElementsByTagName("student");
+
+            for (int i = 0; i < studentList.getLength(); i++) {
+                Node studentNode = studentList.item(i);
+
+                if (studentNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element studentElement = (Element) studentNode;
+
+                    String name = studentElement.getElementsByTagName("name")
+                                    .item(0).getTextContent();
+                    String grade = studentElement.getElementsByTagName("grade")
+                                    .item(0).getTextContent();
+
+                    System.out.println("Student " + (i + 1) + ":");
+                    System.out.println("Name: " + name);
+                    System.out.println("Grade: " + grade);
+                    System.out.println("--------------------");
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+-----------
+class/file name: XMLReaderExample.java:
+code:
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package xmlreadwrite;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
+import java.io.File;
+
+/**
+ *
+ *
+ */
+// Java Program to Read XML Using DOM Parser
+public class XMLReaderExample {
+    public static void main(String[] args) throws Exception {
+        // Specify the file path as a File object
+        File xmlFile = new File("C:/Users/ahmad/Desktop/output.xml");
+
+        // Create a DocumentBuilder
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+
+        // Parse the XML file
+        Document document = builder.parse(xmlFile);
+
+        // Access elements by tag name
+        NodeList nodeList = document.getElementsByTagName("library");
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Node node = nodeList.item(i);
+            System.out.println("Element Content: " + node.getTextContent());
+        }
+    }
+}
+-----------
+class/file name: XMLWriter.java:
+code:
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package xmlreadwrite;
+
+/**
+ *
+ *
+ */
+import org.w3c.dom.*;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.File;
+
+public class XMLWriter {
+    public static void main(String[] args) {
+        try {
+            // Create document builder
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+            // Root element <students>
+            Document doc = docBuilder.newDocument();
+            Element rootElement = doc.createElement("students");
+            doc.appendChild(rootElement);
+
+            // First student
+            Element student1 = doc.createElement("student");
+            rootElement.appendChild(student1);
+
+            Element name1 = doc.createElement("name");
+            name1.appendChild(doc.createTextNode("Alice"));
+            student1.appendChild(name1);
+
+            Element grade1 = doc.createElement("grade");
+            grade1.appendChild(doc.createTextNode("90"));
+            student1.appendChild(grade1);
+
+            // Second student
+            Element student2 = doc.createElement("student");
+            rootElement.appendChild(student2);
+
+            Element name2 = doc.createElement("name");
+            name2.appendChild(doc.createTextNode("Bob"));
+            student2.appendChild(name2);
+
+            Element grade2 = doc.createElement("grade");
+            grade2.appendChild(doc.createTextNode("85"));
+            student2.appendChild(grade2);
+
+            // Write the content into an XML file
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes"); 
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File("C:/Users/ahmad/Desktop/students.xml"));
+
+            transformer.transform(source, result);
+            System.out.println("XML file written successfully!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+-----------
+class/file name: XMLWriterExample.java:
+code:
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package xmlreadwrite;
+
+// Java Program to Write XML Using DOM Parser
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+/**
+ *
+ *
+ */
+public class XMLWriterExample {
+    public static void main(String[] args) throws Exception {
+        // Create a DocumentBuilder
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+
+        // Create a new Document
+        Document document = builder.newDocument();
+
+        // Create root element
+        Element root = document.createElement("library");
+        document.appendChild(root);
+
+        // Create book elements and add text content
+        Element book1 = document.createElement("Program1");
+        book1.appendChild(document.createTextNode("Java Programming"));
+        Element book2 = document.createElement("Program2");
+        book2.appendChild(document.createTextNode("Python Programming"));
+        Element book3 = document.createElement("Program3");
+        book3.appendChild(document.createTextNode("JavaScript"));
+        Element book4 = document.createElement("Program4");
+        book4.appendChild(document.createTextNode("C Programming"));
+        root.appendChild(book1);
+        root.appendChild(book2);
+        root.appendChild(book3);
+        root.appendChild(book4);
+        
+
+        // Write to XML file
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource source = new DOMSource(document);
+
+        // Specify your local file path
+        StreamResult result = new StreamResult("C:/Users/ahmad/Desktop/output.xml");
+        transformer.transform(source, result);
+
+        System.out.println("XML file created successfully!");
+    }
+}
+-----------
+------------
